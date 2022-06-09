@@ -1,8 +1,8 @@
-# bot-serverless
+# S3-Slack-Notify
 ![](./S3Notify.drawio.png)
 
 ## About
-**bot-serverless** is a bot which send notification to slack channel when any  API events happen on S3 bucket
+   Is a bot which send notification to slack channel when any  API events happen on S3 bucket
 
 ## Prerequisites
   1. Right Now this functiion is configured for all the events(requirement of the task), if you want only some perticular event like **PutObjectAcl** ,
