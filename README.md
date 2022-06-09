@@ -7,7 +7,6 @@
 ## Prerequisites
   1. Right Now this functiion is configured for all the events, if you want only some perticular event like **PutObjectAcl** ,
     **PutObject**  events then you need to update the Cloudwatch Event. You can do this by updateing  the **serverless.yml** 
-  [cloudwatch-event](https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/Create-CloudWatch-Events-Rule.html)
 
   2. Create a webhook url for for slack channel. For more information on how to create webhook url you can go through.
    [slack-webhook](https://slack.com/intl/en-in/help/articles/115005265063-Incoming-webhooks-for-Slack)
