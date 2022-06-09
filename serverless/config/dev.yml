@@ -1,0 +1,3 @@
+REGION: eu-west-2
+STAGE: dev
+WEBHOOK_URL_NAME: "SlackWebHookURL"

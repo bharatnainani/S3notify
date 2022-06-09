@@ -1,0 +1,6 @@
+project                       = "atlan"
+environment                   = "dev"
+aws_region                    = "us-west-2"
+costcentre                    = "cost"
+department                    = "security"
+cloudtrail-s3-bucket          = ""
