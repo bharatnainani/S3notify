@@ -1,4 +1,4 @@
-service: botServerless
+service: S3Notify
 provider:
   name: aws
   stage: ${file(./config/${opt:stage, 'dev'}.yml):STAGE}
@@ -31,8 +31,8 @@ package:
 functions:
   slack-notification:
     handler: main.lambda_handler
-    name: botServerless
-    description: "A serverless bot for sending specific string logs from cloudwatch log to slack channel"
+    name: S3Notify
+    description: "A serverless bot for sending S3 API Event to slack channel"
     memorySize: 150
     timeout: 30
     runtime: python3.8
