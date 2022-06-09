@@ -2,10 +2,10 @@
 ![](./S3Notify.drawio.png)
 
 ## About
-**bot-serverless** is a bot which send notification to slack channel when any  API events happen on S3  bucket
+**bot-serverless** is a bot which send notification to slack channel when any  API events happen on S3 bucket
 
 ## Prerequisites
-  1. Right Now this functiion is configured for all the events, if you want only some perticular event like **PutObjectAcl** ,
+  1. Right Now this functiion is configured for all the events(requirement of the task), if you want only some perticular event like **PutObjectAcl** ,
     **PutObject**  events then you need to update the Cloudwatch Event. You can do this by updateing  the **serverless.yml** 
 
   2. Create a webhook url for for slack channel. For more information on how to create webhook url you can go through.
@@ -29,7 +29,7 @@
   
 3. Edit the config file depending upon your requirement
    ```
-   ./config/dev.yml
+   ./serverless/config/dev.yml
    ```
    
    ```
@@ -49,8 +49,6 @@
     terraform apply -var-file=vars.tfvars
     ```
 
-
-
 6. Install serverless framework (may require sudo)
    ```
    npm install -g serverless
@@ -69,5 +67,5 @@
 
 ## Post Deployment
    
-   Your message will look like this after deployment
+   Your message will look something like this after deployment.
 ![](./slack-message.png)
