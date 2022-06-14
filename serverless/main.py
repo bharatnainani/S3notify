@@ -1,14 +1,8 @@
 import boto3
 import json
-import gzip
 import os
-import base64
-# from botocore.vendored import requests
-# from urllib.error import HTTPError, URLError
-# from urllib.request import Request, urlopen
 import logging
 import slack_sdk
-import re
 from slack_sdk.webhook import WebhookClient
 
 logger=logging.getLogger()
