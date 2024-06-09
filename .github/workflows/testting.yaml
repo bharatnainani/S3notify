@@ -68,7 +68,7 @@ jobs:
               environments+=("data")
             fi
           done
-          environments=$(jq -nc --argjson arr "${environments[@]}" '$arr')
+          environments=$(jq -nc --argjson arr "$(printf '%s\n' "${environments[@]}" | jq -R . | jq -s .)" '$arr')
           echo "Updated environments list: $environments"
           echo "environments=$environments" >> $GITHUB_OUTPUT
         shell: bash
@@ -89,6 +89,7 @@ jobs:
           echo "Environment: ${{ matrix.environment }}"
 
   # get-role-name-oidc:
+  #   runs-on: ubuntu-latest
   #   needs: plan-and-apply
   #   strategy:
   #     matrix:
@@ -98,6 +99,7 @@ jobs:
   #     environment: ${{ matrix.environment }}
 
   # get-tf-root-module-folders:
+  #   runs-on: ubuntu-latest
   #   needs: get-role-name-oidc
   #   strategy:
   #     matrix:
@@ -105,6 +107,7 @@ jobs:
   #   uses: vas-dev/vas-devops-pulse/.github/workflows/cicd.terraform.get_tf_root_module_folders.reuse.yml@main
 
   # terraform-validate:
+  #   runs-on: ubuntu-latest
   #   needs: get-tf-root-module-folders
   #   strategy:
   #     matrix:
@@ -115,6 +118,7 @@ jobs:
   #     root-module-folders: ${{ needs.get-tf-root-module-folders.outputs.root-module-folders }}
 
   # terraform-plan:
+  #   runs-on: ubuntu-latest
   #   needs: terraform-validate
   #   strategy:
   #     matrix:
@@ -129,6 +133,7 @@ jobs:
   #     commit-id: ${{ github.sha }}
 
   # terraform-check-plan:
+  #   runs-on: ubuntu-latest
   #   needs: terraform-plan
   #   strategy:
   #     matrix:
@@ -141,6 +146,7 @@ jobs:
   #     commit-id: ${{ github.sha }}
 
   # terraform-apply:
+  #   runs-on: ubuntu-latest
   #   needs: terraform-check-plan
   #   strategy:
   #     matrix:
