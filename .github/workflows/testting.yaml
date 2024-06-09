@@ -4,7 +4,7 @@ run-name: "[Automated] @${{ github.actor }} ran automated deployment to staging 
 on:
   push:
     branches:
-      - DEVOPS-1792/workflows
+      - main
 
 jobs:
   detect-modified-tfvars:
