@@ -48,7 +48,7 @@ jobs:
       - name: Build Environments Array
         id: environments
         run: |
-          MODIFIED_FILES=${{ needs.detect-modified-tfvars.outputs.files }}
+          MODIFIED_FILES='${{ needs.detect-modified-tfvars.outputs.files }}'
           environments=()
           for file in $(echo $MODIFIED_FILES | jq -r '.[]'); do
             if echo "$file" | grep -q "sandbox"; then
