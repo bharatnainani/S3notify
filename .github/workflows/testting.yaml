@@ -17,11 +17,16 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v2
+        with:
+          terraform_version: 1.2.9
+          terraform_wrapper: false
 
       - name: Detect modified .tfvars files
         id: detect-tfvars
         run: |
-          MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
+          MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.tfvars$')
 
           if [ -z "$MODIFIED_FILES" ]; then
             echo "No .tfvars files modified"
