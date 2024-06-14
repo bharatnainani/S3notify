@@ -84,7 +84,7 @@ jobs:
     if: needs.build-environment-array.outputs.environments != '[]'
     strategy:
       matrix:
-        environment: ${{ fromJson(needs.build-environment-array.outputs.environments) }}
+        environment: "sandbox"
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -92,16 +92,20 @@ jobs:
       - name: Debug environment
         run:  |
           echo "Environment: ${{ matrix.environment }}"
+          
+      - name: Set oidc-role-arn output
+        id: set-oidc-role-arn
+        run: echo "OIDC_ROLE_ARN_${{ matrix.environment}}.upper()"
 
-  # get-role-name-oidc:
-  #   runs-on: ubuntu-latest
-  #   needs: plan-and-apply
-  #   strategy:
-  #     matrix:
-  #       environment: ${{ fromJson(needs.build-environment-array.outputs.environments) }}
-  #   uses: vas-dev/vas-devops-pulse/.github/workflows/cicd.terraform.get_role_name_oidc.yml@main
-  #   with:
-  #     environment: ${{ matrix.environment }}
+    # get-role-name-oidc:
+    #   runs-on: ubuntu-latest
+    #   needs: plan-and-apply
+    #   strategy:
+    #     matrix:
+    #       environment: ${{ fromJson(needs.build-environment-array.outputs.environments) }}
+    #   uses: vas-dev/vas-devops-pulse/.github/workflows/cicd.terraform.get_role_name_oidc.yml@main
+    #   with:
+    #     environment: ${{ matrix.environment }}
 
   # get-tf-root-module-folders:
   #   runs-on: ubuntu-latest
