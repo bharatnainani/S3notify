@@ -26,7 +26,7 @@ jobs:
       - name: Detect modified .tfvars files
         id: detect-tfvars
         run: |
-          MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }} | grep '\.tfvars$')
+          MODIFIED_FILES=$(git diff --name-only ${{ github.event.before }} ${{ github.sha }})
 
           if [ -z "$MODIFIED_FILES" ]; then
             echo "No .tfvars files modified"
