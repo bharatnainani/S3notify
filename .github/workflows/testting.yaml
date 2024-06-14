@@ -84,7 +84,7 @@ jobs:
     if: needs.build-environment-array.outputs.environments != '[]'
     strategy:
       matrix:
-        environment: "sandbox"
+        environment: ["sandbox"]
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
