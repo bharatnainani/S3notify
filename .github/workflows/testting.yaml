@@ -95,7 +95,7 @@ jobs:
           
       - name: Set oidc-role-arn output
         id: set-oidc-role-arn
-        run: echo "OIDC_ROLE_ARN_${{ matrix.environment}}.upper()"
+        run: echo OIDC_ROLE_ARN_${{ matrix.environment}}.upper()
 
     # get-role-name-oidc:
     #   runs-on: ubuntu-latest
